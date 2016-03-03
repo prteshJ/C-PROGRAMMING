@@ -1,0 +1,98 @@
+Priteshs-MacBook-Pro:PROGRAM_5 PriteshJ$ gdb ./prog5
+GNU gdb (GDB) 7.10
+Copyright (C) 2015 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-apple-darwin14.5.0".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from ./prog5...Reading symbols from 
+/Users/PriteshJ/Desktop/C_LEARN/CHAPTER_18/gdb_progs/PROGRAM_5/prog5.dSYM/Contents/Resources/DWARF/prog5...done.
+done.
+(gdb) list main
+12		++x.day;
+13	
+14		return x;
+15	}
+16	
+17	int main(void) {
+18		struct date today = {10, 11, 2004};
+19		int      array[5] = {1, 2, 3, 4, 5};
+20		struct date *newdate, foo();
+21		char      *string = "test string";
+(gdb) break main 
+Breakpoint 1 at 0x100000e50: file prog5.c, line 18.
+(gdb) run
+Starting program: /Users/PriteshJ/Desktop/C_LEARN/CHAPTER_18/gdb_progs/PROGRAM_5/prog5 
+
+Breakpoint 1, main () at prog5.c:18
+18		struct date today = {10, 11, 2004};
+(gdb) step
+19		int      array[5] = {1, 2, 3, 4, 5};
+(gdb) print today 
+$1 = {month = 10, day = 11, year = 2004}
+(gdb) print array
+$2 = {0, 0, 0, 0, 1606417112}
+(gdb) step
+21		char      *string = "test string";
+(gdb) print array
+$3 = {1, 2, 3, 4, 5}
+(gdb) list 21, 26
+21		char      *string = "test string";
+22		int       i = 3;
+23	
+24		newdate = (struct date *) malloc(sizeof(struct date));
+25		newdate->month = 11;
+26		newdate->day = 15;
+(gdb) step 5
+27		newdate->year = 2004;
+(gdb) print string
+$4 = 0x100000f94 "test string"
+(gdb) print string[1]
+$5 = 101 'e'
+(gdb) print array[i]
+$6 = 4
+(gdb) print i
+$7 = 3
+(gdb) print array[i-1]
+$8 = 3
+(gdb) print newdate 
+$9 = (struct date *) 0x100100020
+(gdb) print newdate ->month 
+$10 = 11
+(gdb) print newdate->day + i
+$11 = 18
+(gdb) print $9
+$12 = (struct date *) 0x100100020
+(gdb) info locals 
+today = {month = 10, day = 11, year = 2004}
+array = {1, 2, 3, 4, 5}
+newdate = 0x100100020
+string = 0x100000f94 "test string"
+i = 3
+(gdb) break foo
+Breakpoint 2 at 0x100000df6: file prog5.c, line 12.
+(gdb) continue 
+Continuing.
+
+Breakpoint 2, foo (x=...) at prog5.c:12
+12		++x.day;
+(gdb) print today
+No symbol "today" in current context.
+(gdb) print main::today
+$13 = {month = 10, day = 11, year = 2004}
+(gdb) step
+14		return x;
+(gdb) print x.day 
+$14 = 12
+(gdb) continue 
+Continuing.
+[Inferior 1 (process 2886) exited normally]
+(gdb) 

@@ -1,0 +1,4 @@
+Just type a negative number in prog8.c in CHAPTER_5/EXERCISE_1/prog8.c .
+
+You type -1234.
+Output is -4-3-2-1.

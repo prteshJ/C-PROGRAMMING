@@ -1,0 +1,4 @@
+INVALID VARIABLE NAMES
+
+char
+6_05

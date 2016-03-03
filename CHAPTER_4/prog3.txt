@@ -1,0 +1,27 @@
+C is a popular programming langauge (brilliant deduction, huh?) 
+Let's have a problem with C. 
+You're duty is to write a program that recognizes valid C constants.
+
+Integer constants may begin with a + or - sign, followed by at least one digit, (0-9). There may then be any number of digits following the first. The +, - signs are optional. If they are present, there may only be one sign. Optionally, following the digits, may be exactly one letter, u, U, l, or L.
+
+Hexadecimal constants consist of a 0 followed by exactly one X (although, the X may be lower case), followed by any number of digits and letters (again, there must be at least one). The letters can only be in the range A-F, and may be lower case or upper case. Finally, there's an optional letter, either u, U, l, or L.
+
+Floating point constants are a pain, but I'm gonna put 'em in anyway. 
+Floats may start with an optional +, or - sign (not required, but if it's there, there can be only one). Following the sign, is any number of digits (no digits are acceptable), followed by a decimal (.). Following the decimal, there may be any number of digits (0-9). There must be at least one digit after the decimal point. No letters may follow it.
+
+Well, let's put another item in. Let's have exponentials here. Remember the integer constants? Same rules here, except for exponentials there may not be a u, U, l, or L following the digits. Instead, we may have a e, or E, followed by an optional +, or - sign (again, there can be only one), followed by at least one digit (0-9). No letters may follow the digits after the 'e'.
+
+Since I've made this convoluted enough, you won't have to recognize floating point exponentials.
+
+
+INVALID CONSTANTS:
+123.5e2
+98.6F
+1234uL
+1.234L
+0x10.5
+98.7U
+1.2Fe-7
+17777s
+15,000
+

@@ -1,0 +1,53 @@
+Priteshs-MacBook-Pro:gdb_progs PriteshJ$ make program4
+gcc -g prog4.c -o prog4
+./prog4
+make: *** [program4] Bus error: 10
+Priteshs-MacBook-Pro:gdb_progs PriteshJ$ gdb ./prog4
+GNU gdb (GDB) 7.10
+Copyright (C) 2015 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-apple-darwin14.5.0".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from ./prog4...Reading symbols from 
+/Users/PriteshJ/Desktop/C_LEARN/CHAPTER_18/gdb_progs/prog4.dSYM/Contents/Resources/DWARF/prog4...done.
+done.
+(gdb) run
+Starting program: /Users/PriteshJ/Desktop/C_LEARN/CHAPTER_18/gdb_progs/prog4 
+
+Program received signal SIGBUS, Bus error.
+0x0000000100000f1e in main () at prog4.c:8
+8			sum += data[i];
+(gdb) list 8
+3	int main(void) {
+4		const int data[5] = {1, 2, 3, 4, 5};
+5		int i, sum;
+6	
+7		for(i = 0; i >= 0; ++i)
+8			sum += data[i];
+9	
+10		printf("sum = %i\n", sum);
+11	
+12		return 0;
+(gdb) print sum
+$1 = -1718694442
+(gdb) print i
+$2 = 5152
+(gdb) print data
+$3 = {1, 2, 3, 4, 5}
+(gdb) print data[0]
+$4 = 1
+(gdb) quit
+A debugging session is active.
+
+	Inferior 1 [process 2846] will be killed.
+
+Quit anyway? (y or n) y
